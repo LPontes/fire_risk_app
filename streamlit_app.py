@@ -35,8 +35,7 @@ with st.sidebar:
     st.sidebar.title("About")
     st.sidebar.info(
         """
-        Esse web app foi criado por Lucas Pontes para o processo seletivo de pesquisador sênior na Suzano
-            [GitHub](https://github.com/LPontes)
+        Esse web app foi criado por [Lucas Pontes](https://github.com/LPontes) para o processo seletivo de pesquisador sênior na Suzano
             
         Source code: <https://github.com/LPontes/streamlit_demo>
     """
