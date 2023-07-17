@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 from apps import incendio, clima, upload  # import your app modules here
 
-st.set_page_config(page_title="Streamlit Geospatial", layout="wide")
+st.set_page_config(page_title="Suzano Geospatial", layout="wide")
 
 # A dictionary of apps in the format of {"App title": "App icon"}
 # More icons can be found here: https://icons.getbootstrap.com
@@ -35,12 +35,10 @@ with st.sidebar:
     st.sidebar.title("About")
     st.sidebar.info(
         """
-        This web [app](https://share.streamlit.io/giswqs/streamlit-template) is maintained by [Qiusheng Wu](https://wetlands.io). You can follow me on social media:
-            [GitHub](https://github.com/giswqs) | [Twitter](https://twitter.com/giswqs) | [YouTube](https://www.youtube.com/c/QiushengWu) | [LinkedIn](https://www.linkedin.com/in/qiushengwu).
-        
-        Source code: <https://github.com/giswqs/streamlit-template>
-
-        More menu icons: <https://icons.getbootstrap.com>
+        Esse web app foi criado por Lucas Pontes para o processo seletivo de pesquisador sênior na Suzano
+            [GitHub](https://github.com/LPontes)
+            
+        Source code: <https://github.com/LPontes/streamlit_demo>
     """
     )
 

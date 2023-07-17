@@ -1,22 +1,25 @@
 import streamlit as st
 import ee
 import geemap as gee
+import datetime 
 
 gee.ee_initialize()
 
 def app():
-    st.title("Home")
+    st.title("Monitoramento do Risco de Incêndio")
 
     st.markdown(
         """
-    A [streamlit](https://streamlit.io) app template for geospatial applications based on [streamlit-option-menu](https://github.com/victoryhb/streamlit-option-menu). 
-    To create a direct link to a pre-selected menu, add `?page=<app name>` to the URL, e.g., `?page=upload`.
-    https://share.streamlit.io/giswqs/streamlit-template?page=upload
-
+        Risco de fogo ou incêndio estimado de acordo com metodologia do INPE,
+          com base em dados meteorológicos e de uso e cobertura do solo
     """
     )
+    
+    begTime = st.date_input("Selecione a data", datetime.date.today())
+    
     lulc = ee.Image("projects/ee-lucaspontesm/assets/MAPBIOMAS/mapbiomas-brazil-collection-71-saopaulo-2021")
+    
     m = gee.Map()
-    # m.addayer(lulc)
+    m.addLayer(lulc)
     m.add_basemap("ROADMAP")
     m.to_streamlit(height=700)
