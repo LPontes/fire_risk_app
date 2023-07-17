@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from apps import home, heatmap, upload  # import your app modules here
+from apps import incendio, clima, upload  # import your app modules here
 
 st.set_page_config(page_title="Streamlit Geospatial", layout="wide")
 
@@ -8,9 +8,8 @@ st.set_page_config(page_title="Streamlit Geospatial", layout="wide")
 # More icons can be found here: https://icons.getbootstrap.com
 
 apps = [
-    {"func": home.app, "title": "Home", "icon": "house"},
-    {"func": heatmap.app, "title": "Heatmap", "icon": "map"},
-    {"func": upload.app, "title": "Upload", "icon": "cloud-upload"},
+    {"func": incendio.app, "title": "Risco de Incêndio", "icon": "bi bi-fire"},
+    {"func": clima.app, "title": "Riscos Climáticos", "icon": "bi bi-thermometer-snow"}
 ]
 
 titles = [app["title"] for app in apps]
@@ -26,7 +25,7 @@ else:
 
 with st.sidebar:
     selected = option_menu(
-        "Main Menu",
+        "Menu",
         options=titles,
         icons=icons,
         menu_icon="cast",

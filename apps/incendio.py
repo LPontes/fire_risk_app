@@ -1,6 +1,8 @@
 import streamlit as st
-import leafmap.foliumap as leafmap
+import ee
+import geemap as gee
 
+gee.ee_initialize()
 
 def app():
     st.title("Home")
@@ -13,7 +15,8 @@ def app():
 
     """
     )
-
-    m = leafmap.Map(locate_control=True)
+    lulc = ee.Image("projects/ee-lucaspontesm/assets/MAPBIOMAS/mapbiomas-brazil-collection-71-saopaulo-2021")
+    m = gee.Map()
+    # m.addayer(lulc)
     m.add_basemap("ROADMAP")
     m.to_streamlit(height=700)
