@@ -17,6 +17,6 @@ O aplicativo web foi desenvolvido com o Streamlit.
 App URL: <https://monitoramento-fogo-e-clima.streamlit.app/>
 
 <p float="left">
- <img src="./assets/print_app.jpg" width="200" />
+ <img src="./assets/print_app.jpg"/>
 </p>
 
