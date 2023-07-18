@@ -8,7 +8,7 @@ Foram utilizados dados de sensoreamento remoto disponíveis no catálogo do Goog
 - A temperatura e umidade relativa vieram do modelo [GFS](https://developers.google.com/earth-engine/datasets/catalog/NOAA_GFS0P25).
 - Os dados de focos de incêndio foram obtidos dos sensores [VIIRS](https://developers.google.com/earth-engine/datasets/catalog/NOAA_VIIRS_001_VNP14A1#description).
 - A altitude utilizada foi a do [SRTM](https://developers.google.com/earth-engine/datasets/catalog/CGIAR_SRTM90_V4)
-- O mapa de uso e ocupação do uso do solo utilizado foi a coleção 7.1 do Mapbiomas (https://mapbiomas.org/colecoes-mapbiomas-1?cama_set_language=pt-BR)
+- O mapa de uso e ocupação do uso do solo utilizado foi a coleção 7.1 do [Mapbiomas](https://mapbiomas.org/colecoes-mapbiomas-1?cama_set_language=pt-BR)
 
 Os calculos podem ser acessados na pasta src.
 
