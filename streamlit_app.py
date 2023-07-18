@@ -25,19 +25,21 @@ else:
 
 with st.sidebar:
     selected = option_menu(
-        "Menu",
+        "Sala de Monitoramento",
         options=titles,
         icons=icons,
-        menu_icon="cast",
+        menu_icon="tree-fill",
         default_index=default_index,
     )
 
     st.sidebar.title("About")
     st.sidebar.info(
         """
-        Esse web app foi criado por [Lucas Pontes](https://github.com/LPontes) para o processo seletivo de pesquisador sênior na Suzano
+        Esse web app foi criado por [Lucas Pontes](https://github.com/LPontes).
+
+        Acesse meu [portfólio](https://github.com/LPontes/Portfolio)
             
-        Source code: <https://github.com/LPontes/streamlit_demo>
+        A documentação completa pode ser acessada em: <https://github.com/LPontes/streamlit_demo>
     """
     )
 
