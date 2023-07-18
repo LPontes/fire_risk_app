@@ -2,7 +2,7 @@
 
 O Risco de Fogo foi calculado para o estado de São Paulo usando uma adaptação da metodologia do [INPE](https://queimadas.dgi.inpe.br/~rqueimadas/documentos/RiscoFogo_Sucinto.pdf).
 
-Foram utilizados dados de sensoreamento remoto disponíveis no catálogo do Google Earth Engine.
+Foram utilizados dados de sensoriamento remoto disponíveis no catálogo do Google Earth Engine.
 
 - Para os dados de precipitação foi utilizado o [IMERG](https://developers.google.com/earth-engine/datasets/catalog/NASA_GPM_L3_IMERG_V06).
 - A temperatura e umidade relativa vieram do modelo [GFS](https://developers.google.com/earth-engine/datasets/catalog/NOAA_GFS0P25).
