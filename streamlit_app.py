@@ -36,8 +36,7 @@ with st.sidebar:
     st.sidebar.info(
         """
         Esse web app foi criado por [Lucas Pontes](https://github.com/LPontes).
-
-        Acesse meu [portfólio](https://github.com/LPontes/Portfolio)
+        Acesse meu [portfólio](https://github.com/LPontes/Portfolio).
             
         A documentação completa pode ser acessada em: <https://github.com/LPontes/streamlit_demo>
     """
