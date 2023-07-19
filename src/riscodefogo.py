@@ -236,18 +236,22 @@ def risco_observado(rb, begTime):
 
 def risco_ajustado(rf, begTime):
     today = ee.Date(begTime.strftime("%Y-%m-%d"))
-    focos = (viirs_collection
-                .filterDate(today.advance(-3, 'day'), today)
-                .select('FireMask').max().gt(6).clip(aoi)
-                .remap(**{
-                        'from': [0,1],
-                        'to': [1,2],
-                        'defaultValue': None,
-                        'bandName': 'FireMask'
-                        })
-                )
 
-    rf_ajustado = rf.multiply(focos)
+    if viirs_collection.filterDate(today.advance(-3, 'day'), today).size().getInfo() == 0:
+        rf_ajustado = rf
+    else:   
+        focos = (viirs_collection
+        .filterDate(today.advance(-3, 'day'), today)
+        .select('FireMask').max().gt(6).clip(aoi)
+        .remap(**{
+                'from': [0,1],
+                'to': [1,2],
+                'defaultValue': None,
+                'bandName': 'FireMask'
+                })
+        )
+
+        rf_ajustado = rf.multiply(focos)
 
     return rf_ajustado
      
