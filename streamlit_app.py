@@ -32,16 +32,6 @@ with st.sidebar:
         default_index=default_index,
     )
 
-    st.sidebar.title("About")
-    st.sidebar.info(
-        """
-        Esse web app foi criado por [Lucas Pontes](https://github.com/LPontes).
-        Acesse meu [portfólio](https://github.com/LPontes/Portfolio).
-            
-        A documentação completa pode ser acessada em: <https://github.com/LPontes/streamlit_demo>
-    """
-    )
-
 for app in apps:
     if app["title"] == selected:
         app["func"]()

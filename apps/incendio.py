@@ -45,4 +45,14 @@ def app():
     m.addLayer(pse, precipitationVis, 'Dias de Secura (PSE)')
     m.addLayer(rf, vis_classe_fogo, 'Risco de Fogo Observado')
     m.setCenter(-48, -24, 7)  
-    m.to_streamlit(height=700)
+    m.to_streamlit(height=500)
+
+    st.title('About')
+    st.info(
+        """
+        Esse web app foi criado por [Lucas Pontes](https://github.com/LPontes).
+        Acesse meu [portfólio](https://github.com/LPontes/Portfolio).
+            
+        A documentação completa pode ser acessada em: <https://github.com/LPontes/streamlit_demo>
+    """
+    )
