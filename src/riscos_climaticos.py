@@ -49,14 +49,26 @@ def gfs_var_prediction(var_name, predict_date, bbox):
         var_pred = var_pred.pow(2).reduce(ee.Reducer.sum()).sqrt()
     
     # caso for outra variavel
-    else:
+    elif var_name in ['Temperatura mínima (ºC)',
+                      'Umidade relativa do ar (%)']:
         var_pred = (gfs_collection
                     .select(var_dict[var_name])
                     .filterDate(today, today.advance(6,'hour')) # get a specific forecast initialization,
                     .filter(ee.Filter.lt('forecast_time',today.advance(max_advance,'day').millis())) # Quantos dias pra frente
                     .filter(ee.Filter.gte('forecast_hours',ti) )
                     .filter(ee.Filter.lte('forecast_hours',tf))
-                    .max()) # make a composite of the collection
+                    .min()) # make a composite of the collection
+  
+        var_pred = var_pred.clip(bbox)
+
+    elif var_name == 'Precipitação (mm)':
+        var_pred = (gfs_collection
+                    .select(var_dict[var_name])
+                    .filterDate(today, today.advance(6,'hour')) # get a specific forecast initialization,
+                    .filter(ee.Filter.lt('forecast_time',today.advance(max_advance,'day').millis())) # Quantos dias pra frente
+                    .filter(ee.Filter.gte('forecast_hours',ti) )
+                    .filter(ee.Filter.lte('forecast_hours',tf))
+                    .sum()) # make a composite of the collection
   
         var_pred = var_pred.clip(bbox)
         
