@@ -66,7 +66,7 @@ def gfs_var_prediction(var_name, predict_date, bbox):
                     .select(var_dict[var_name])
                     .filterDate(today, today.advance(6,'hour')) # get a specific forecast initialization,
                     .filter(ee.Filter.lt('forecast_time',today.advance(max_advance,'day').millis())) # Quantos dias pra frente
-                    .filter(ee.Filter.gte('forecast_hours',ti) )
+                    .filter(ee.Filter.gte('forecast_hours',ti+1) )
                     .filter(ee.Filter.lte('forecast_hours',tf))
                     .sum()) # make a composite of the collection
   
