@@ -29,7 +29,7 @@ def app():
     begTime = dt.date.today()
 
     delta_date = st.sidebar.slider('Selecione a variação da data',
-                            min_value=-10,
+                            min_value=0,
                             max_value=3,
                             value=0,
                             step=1,
@@ -45,14 +45,19 @@ def app():
     
     varVis = vis_dict[var_name]
     predict_date = begTime + dt.timedelta(days=delta_date)
-    var_to_plot = rc.gfs_var_prediction(var_name, predict_date, br)
+
+    @st.cache_data
+    def load_model(var_name, predict_date, _br):
+       return rc.gfs_var_prediction(var_name, predict_date, br)
+    
+    var_to_plot = load_model(var_name, predict_date, br)
 
     st.write(f"Data da análise: {predict_date.strftime('%Y-%m-%d')}")
 
     m = gee.Map()
     m.addLayer(var_to_plot, varVis)
     m.setCenter(-50, -31, 4)
-    m.add_colorbar_branca(colors=palette, vmin=0, vmax=100, layer_name="Layer 3")
+    # m.add_colorbar_branca(colors=palette, vmin=0, vmax=100, layer_name="Layer 3")
     m.to_streamlit(height=500)
 
     st.title('About')
