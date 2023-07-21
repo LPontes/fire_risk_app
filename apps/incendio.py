@@ -1,14 +1,15 @@
 import streamlit as st
 from PIL import Image
 import datetime as dt
-
-# import ee
+import ee
 import geemap as gee
 
 # import geopandas as gpd
 from src import riscodefogo as rdf
 
 gee.ee_initialize()
+
+silv = ee.FeatureCollection("projects/ee-lucaspontesm/assets/silvicultura_2021_clean50");
 
 def app():
     st.title("Monitoramento do Risco de Incêndio")
@@ -44,7 +45,8 @@ def app():
     m.add_basemap("ROADMAP")
     m.addLayer(pse, precipitationVis, 'Dias de Secura (PSE)')
     m.addLayer(rf, vis_classe_fogo, 'Risco de Fogo Observado')
-    m.setCenter(-48, -24, 7)  
+    m.addLayer(silv, {},'Áreas de silvicultura')
+    m.setCenter(-48, -24, 6.5)  
     m.to_streamlit(height=500)
 
     st.title('About')
@@ -56,3 +58,15 @@ def app():
         A documentação completa pode ser acessada em: <https://github.com/LPontes/streamlit_demo>
     """
     )
+
+
+    # @st.cache
+    # def risco_calc():
+    #     pse, begTime = rdf.dias_de_seca()
+    #     rb = rdf.risco_basico(pse)
+    #     ro = rdf.risco_observado(rb, begTime)
+    #     rf = rdf.risco_ajustado(ro, begTime)
+
+    #     return rf
+    
+    # rf = risco_calc()

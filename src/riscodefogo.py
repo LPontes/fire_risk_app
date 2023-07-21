@@ -9,7 +9,7 @@ begTime = dt.date.today()
 
 ## READ 
 df_uf = gpd.read_file('./data/vector/uf_sp.shp')
-aoi = ee.Geometry.Polygon(list(df_uf[df_uf['SIGLA_UF']=='SP'].geometry.exterior[0].coords))
+aoi = ee.FeatureCollection("projects/ee-lucaspontesm/assets/uf_sp"); 
 
 lulc = ee.Image("projects/ee-lucaspontesm/assets/MAPBIOMAS/mapbiomas-brazil-collection-71-saopaulo-2021")
 gfs_collection = ee.ImageCollection('NOAA/GFS0P25')
