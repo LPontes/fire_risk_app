@@ -8,10 +8,11 @@ import geopandas as gpd
 from src import riscos_climaticos as rc
 
 df_uf = gpd.read_file('./data/vector/uf_sp.shp')
-df_br =  gpd.read_file('./data/vector/br.shp')
-bbox = ee.Geometry.Polygon(list(df_uf[df_uf['SIGLA_UF']=='SP'].envelope.geometry.exterior[0].coords))
+# df_br =  gpd.read_file('./data/vector/br.shp')
+# bbox = ee.Geometry.Polygon(list(df_uf[df_uf['SIGLA_UF']=='SP'].envelope.geometry.exterior[0].coords))
 aoi = ee.Geometry.Polygon(list(df_uf[df_uf['SIGLA_UF']=='SP'].geometry.exterior[0].coords))
-br = ee.Geometry.Polygon(list(df_br.geometry.exterior[0].coords))
+# aoi = ee.Feature("projects/ee-lucaspontesm/assets/uf_sp").geometry(); 
+# br = ee.Geometry.Polygon(list(df_br.geometry.exterior[0].coords))
 
 palette = ['000096','0064ff', '00b4ff', '33db80', '9beb4a',
            'ffeb00', 'ffb300', 'ff6400', 'eb1e00', 'af0000']
@@ -46,17 +47,13 @@ def app():
     varVis = vis_dict[var_name]
     predict_date = begTime + dt.timedelta(days=delta_date)
 
-    @st.cache_data
-    def load_model(var_name, predict_date, _br):
-       return rc.gfs_var_prediction(var_name, predict_date, br)
-    
-    var_to_plot = load_model(var_name, predict_date, br)
+    var_to_plot = rc.gfs_var_prediction(var_name, predict_date, aoi)
 
     st.write(f"Data da análise: {predict_date.strftime('%Y-%m-%d')}")
 
     m = gee.Map()
     m.addLayer(var_to_plot, varVis)
-    m.setCenter(-50, -31, 4)
+    m.setCenter(-48, -25, 6)
     # m.add_colorbar_branca(colors=palette, vmin=0, vmax=100, layer_name="Layer 3")
     m.to_streamlit(height=500)
 
