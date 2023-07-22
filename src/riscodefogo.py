@@ -254,5 +254,15 @@ def risco_ajustado(rf, begTime):
         rf_ajustado = rf.multiply(focos)
 
     return rf_ajustado
+
+def classifica_risco_de_fogo(rf_ajustado, aoi=aoi):
+    rf_class = (ee.Image(1)
+      .where(rf_ajustado.lte(0.15), 1)
+      .where((rf_ajustado.gt(0.15)).And(rf_ajustado.lte(0.40)), 2)
+      .where((rf_ajustado.gt(0.40)).And(rf_ajustado.lte(0.70)), 3)
+      .where((rf_ajustado.gt(0.70)).And(rf_ajustado.lte(0.95)), 4)
+      .where(rf_ajustado.gt(0.95), 5)).clip(aoi)
+    
+    return rf_class
      
      

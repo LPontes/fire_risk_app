@@ -24,9 +24,10 @@ def app():
     )
 
     pse, begTime = rdf.dias_de_seca()
-    rb = rdf.risco_basico(pse)
-    ro = rdf.risco_observado(rb, begTime)
-    rf = rdf.risco_ajustado(ro, begTime)
+    rf = rdf.risco_basico(pse)
+    rf = rdf.risco_observado(rf, begTime)
+    rf = rdf.risco_ajustado(rf, begTime)
+    rf = rdf.classifica_risco_de_fogo(rf)
 
     st.write(f"Data da análise: {begTime.strftime('%Y-%m-%d')}")
     
@@ -34,12 +35,12 @@ def app():
     st.image(image, caption='Legenda: classes de risco de fogo')
 
     palette = [
-    '000096','0064ff', '00b4ff', '33db80', '9beb4a',
-    'ffeb00', 'ffb300', 'ff6400', 'eb1e00', 'af0000'
-    ]
+            '000096','0064ff', '00b4ff', '33db80', '9beb4a',
+            'ffeb00', 'ffb300', 'ff6400', 'eb1e00', 'af0000'
+            ]
 
     precipitationVis = {'min': 0, 'max': 100, 'palette': palette}
-    vis_classe_fogo = {'min': 0, 'max': 1, 'palette': ['green', 'lime', 'yellow', 'red', 'maroon']}
+    vis_classe_fogo = {'min': 1, 'max': 5, 'palette': ['green', 'lime', 'yellow', 'red', 'maroon']}
 
     m = gee.Map()
     m.add_basemap("ROADMAP")

@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from apps import incendio, clima, upload  # import your app modules here
+from apps import incendio, clima
 
 st.set_page_config(page_title="Suzano Geospatial", layout="wide")
 
