@@ -242,7 +242,7 @@ def risco_ajustado(rf, begTime):
     else:   
         focos = (viirs_collection
         .filterDate(today.advance(-3, 'day'), today)
-        .select('FireMask').max().gt(6).clip(aoi)
+        .select('FireMask').max().gt(7).clip(aoi)
         .remap(**{
                 'from': [0,1],
                 'to': [1,2],
