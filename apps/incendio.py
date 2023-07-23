@@ -43,11 +43,10 @@ def app():
     vis_classe_fogo = {'min': 1, 'max': 5, 'palette': ['green', 'lime', 'yellow', 'red', 'maroon']}
 
     m = gee.Map()
-    m.add_basemap("ROADMAP")
     m.addLayer(pse, precipitationVis, 'Dias de Secura (PSE)')
     m.addLayer(rf, vis_classe_fogo, 'Risco de Fogo Observado')
     m.addLayer(silv, {},'Áreas de silvicultura')
-    m.setCenter(-48, -24, 6.5)  
+    m.setCenter(-48, -24.5, 6.48) 
     m.to_streamlit(height=500)
 
     st.title('About')

@@ -53,7 +53,7 @@ def app():
 
     m = gee.Map()
     m.addLayer(var_to_plot, varVis)
-    m.setCenter(-48, -25, 6)
+    m.setCenter(-47.4, -22.8, 7)
     # m.add_colorbar_branca(colors=palette, vmin=0, vmax=100, layer_name="Layer 3")
     m.to_streamlit(height=500)
 
