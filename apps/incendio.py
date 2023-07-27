@@ -45,7 +45,8 @@ def app():
     m = gee.Map()
     m.addLayer(pse, precipitationVis, 'Dias de Secura (PSE)')
     m.addLayer(rf, vis_classe_fogo, 'Risco de Fogo Observado')
-    m.addLayer(silv, {},'Áreas de silvicultura')
+    m.addLayer(rf.clip(silv), vis_classe_fogo, 'Áreas de silvicultura')
+    # m.addLayer(silv, {},'Áreas de silvicultura')
     m.setCenter(-48, -24.5, 6.48) 
     m.to_streamlit(height=500)
 
