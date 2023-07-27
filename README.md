@@ -11,6 +11,7 @@ Foram utilizados dados de sensoriamento remoto disponíveis no catálogo do Goog
 - O mapa de uso e ocupação do uso do solo utilizado foi a coleção 7.1 do [Mapbiomas](https://mapbiomas.org/colecoes-mapbiomas-1?cama_set_language=pt-BR)
 
 Os calculos podem ser acessados na pasta src.
+O diretório notebooks contém os scripts com análises exploratórias e explicações mais detalhadas da metodologia.
 
 O aplicativo web foi desenvolvido com o Streamlit.
 
@@ -19,4 +20,3 @@ App URL: <https://monitoramento-fogo-e-clima.streamlit.app/>
 <p float="left">
  <img src="./assets/print_app.jpg"/>
 </p>
-
